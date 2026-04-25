@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Design | Pan Ruoqing</title>
+  <meta name="description" content="Game design documents by Pan Ruoqing">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gdd-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 32px; margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+    .gdd-card .tag {
+      display: inline-block; font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--terracotta);
+      border: 1px solid var(--terracotta); padding: 2px 10px;
+      border-radius: 3px; margin-bottom: 12px;
+    }
+    .gdd-card p { color: var(--text-light); font-size: 0.9rem; }
+    .gdd-card ul { color: var(--text-light); font-size: 0.9rem; padding-left: 20px; margin-top: 8px; }
+    .gdd-card ul li { margin-bottom: 4px; }
+
+    .placeholder-box {
+      width: 100%; min-height: 120px; background: var(--linen);
+      border: 1px dashed var(--border); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-light); font-size: 0.9rem; margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="nav-back">&larr; Home</a>
+        <span class="nav-name">Pan Ruoqing</span>
+      </div>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="game-design.html" class="active">Design</a>
+        <a href="pmp-notes.html">PM</a>
+        <a href="life.html">Life</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Game Design Document</h1>
+      <p>From concept to playable experience</p>
+    </div>
+  </div>
+
+  <section class="section-white">
+    <div class="container">
+
+      <div class="gdd-card fade-in">
+        <span class="tag">Core Mechanics</span>
+        <h3>核心玩法</h3>
+        <p>Describe the core gameplay loop, player actions, and what makes the game fun.</p>
+        <div class="placeholder-box">[ Core mechanics content here ]</div>
+      </div>
+
+      <div class="gdd-card fade-in">
+        <span class="tag">World Building</span>
+        <h3>世界观设定</h3>
+        <p>The setting, lore, and narrative framework that grounds the player experience.</p>
+        <div class="placeholder-box">[ World building content here ]</div>
+      </div>
+
+      <div class="gdd-card fade-in">
+        <span class="tag">Level Design</span>
+        <h3>关卡设计</h3>
+        <p>Progression structure, difficulty curves, and spatial design principles.</p>
+        <div class="placeholder-box">[ Level design content here ]</div>
+      </div>
+
+      <div class="gdd-card fade-in">
+        <span class="tag">Character Design</span>
+        <h3>角色设计</h3>
+        <p>Player character, NPCs, and their roles in the gameplay and narrative.</p>
+        <div class="placeholder-box">[ Character design content here ]</div>
+      </div>
+
+      <div class="gdd-card fade-in">
+        <span class="tag">UI / UX</span>
+        <h3>界面与交互设计</h3>
+        <p>HUD, menus, and interaction patterns that support the player experience.</p>
+        <div class="placeholder-box">[ UI/UX content here ]</div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="contact-links">
+        <a href="mailto:your-email@example.com">Email</a>
+        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+      </div>
+      <p>&copy; 2026 Pan Ruoqing. Built with curiosity.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    });
+  </script>
+
+</body>
+</html>

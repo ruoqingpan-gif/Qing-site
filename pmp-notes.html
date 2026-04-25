@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMP Study Notes | Pan Ruoqing</title>
+  <meta name="description" content="PMP certification study notes and PM knowledge system">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-header .badge {
+      display: inline-block; background: var(--forest); color: var(--cream);
+      padding: 6px 16px; border-radius: 20px; font-size: 0.8rem;
+      letter-spacing: 0.05em; margin-bottom: 16px;
+    }
+
+    .note-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 8px; margin-bottom: 16px; overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+    .note-card summary {
+      padding: 20px 24px; cursor: pointer; display: flex;
+      justify-content: space-between; align-items: center;
+      font-family: Georgia, serif; font-size: 1.05rem; color: var(--forest);
+      list-style: none; transition: background 0.2s;
+    }
+    .note-card summary::-webkit-details-marker { display: none; }
+    .note-card summary::after {
+      content: '+'; font-size: 1.2rem; color: var(--terracotta);
+      transition: transform 0.2s;
+    }
+    .note-card[open] summary::after { content: '-'; }
+    .note-card summary:hover { background: var(--linen); }
+    .note-card .note-body {
+      padding: 0 24px 24px; color: var(--text-light); font-size: 0.9rem;
+    }
+    .note-card .note-body p { margin-bottom: 12px; }
+    .note-card .note-body ul { padding-left: 20px; }
+    .note-card .note-body ul li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="nav-back">&larr; Home</a>
+        <span class="nav-name">Pan Ruoqing</span>
+      </div>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="game-design.html">Design</a>
+        <a href="pmp-notes.html" class="active">PM</a>
+        <a href="life.html">Life</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="badge">PMP Certified &middot; 3A</div>
+      <h1>PMP Study Notes</h1>
+      <p>Project Management Body of Knowledge, distilled into practical insights</p>
+    </div>
+  </div>
+
+  <section class="section-white">
+    <div class="container">
+
+      <details class="note-card fade-in">
+        <summary>Integration Management 整合管理</summary>
+        <div class="note-body">
+          <p>Coordinates all project elements, ensuring processes are properly sequenced and integrated.</p>
+          <ul>
+            <li>Develop Project Charter</li>
+            <li>Develop Project Management Plan</li>
+            <li>Direct and Manage Project Work</li>
+            <li>Monitor and Control Project Work</li>
+            <li>Perform Integrated Change Control</li>
+            <li>Close Project or Phase</li>
+          </ul>
+          <p>[ Your notes here ]</p>
+        </div>
+      </details>
+
+      <details class="note-card fade-in">
+        <summary>Scope Management 范围管理</summary>
+        <div class="note-body">
+          <p>Ensures the project includes all the work required, and only the work required.</p>
+          <ul>
+            <li>Plan Scope Management</li>
+            <li>Collect Requirements</li>
+            <li>Define Scope</li>
+            <li>Create WBS</li>
+            <li>Validate Scope</li>
+            <li>Control Scope</li>
+          </ul>
+          <p>[ Your notes here ]</p>
+        </div>
+      </details>
+
+      <details class="note-card fade-in">
+        <summary>Schedule Management 进度管理</summary>
+        <div class="note-body">
+          <p>Manages timely completion of the project through proper scheduling.</p>
+          <ul>
+            <li>Plan Schedule Management</li>
+            <li>Define Activities</li>
+            <li>Sequence Activities</li>
+            <li>Estimate Activity Durations</li>
+            <li>Develop Schedule</li>
+            <li>Control Schedule</li>
+          </ul>
+          <p>[ Your notes here ]</p>
+        </div>
+      </details>
+
+      <details class="note-card fade-in">
+        <summary>Cost Management 成本管理</summary>
+        <div class="note-body">
+          <p>Plans, estimates, budgets, and controls costs to keep the project within approved budget.</p>
+          <ul>
+            <li>Plan Cost Management</li>
+            <li>Estimate Costs</li>
+            <li>Determine Budget</li>
+            <li>Control Costs</li>
+          </ul>
+          <p>[ Your notes here ]</p>
+        </div>
+      </details>
+
+      <details class="note-card fade-in">
+        <summary>Quality Management 质量管理</summary>
+        <div class="note-body">
+          <p>Incorporates organizational quality policies into the project.</p>
+          <ul>
+            <li>Plan Quality Management</li>
+            <li>Manage Quality</li>
+            <li>Control Quality</li>
+          </ul>
+          <p>[ Your notes here ]</p>
+        </div>
+      </details>
+
+      <details class="note-card fade-in">
+        <summary>Resource Management 资源管理</summary>
+        <div class="note-body">
+          <p>Identifies, acquires, and manages resources needed for successful project completion.</p>
+          <ul>
+            <li>Plan Resource Management</li>
+            <li>Estimate Activity Resources</li>
+            <li>Acquire Resources</li>
+            <li>Develop Team</li>
+            <li>Manage Team</li>
+            <li>Control Resources</li>
+          </ul>
+          <p>[ Your notes here ]</p>
+        </div>
+      </details>
+
+      <details class="note-card fade-in">
+        <summary>Communications Management 沟通管理</summary>
+        <div class="note-body">
+          <p>Ensures timely and appropriate planning, creation, and distribution of project information.</p>
+          <ul>
+            <li>Plan Communications Management</li>
+            <li>Manage Communications</li>
+            <li>Monitor Communications</li>
+          </ul>
+          <p>[ Your notes here ]</p>
+        </div>
+      </details>
+
+      <details class="note-card fade-in">
+        <summary>Risk Management 风险管理</summary>
+        <div class="note-body">
+          <p>Conducts risk management planning, identification, analysis, response planning, and controlling.</p>
+          <ul>
+            <li>Plan Risk Management</li>
+            <li>Identify Risks</li>
+            <li>Perform Qualitative Risk Analysis</li>
+            <li>Perform Quantitative Risk Analysis</li>
+            <li>Plan Risk Responses</li>
+            <li>Implement Risk Responses</li>
+            <li>Monitor Risks</li>
+          </ul>
+          <p>[ Your notes here ]</p>
+        </div>
+      </details>
+
+      <details class="note-card fade-in">
+        <summary>Procurement Management 采购管理</summary>
+        <div class="note-body">
+          <p>Purchases or acquires products, services, or results needed from outside the project team.</p>
+          <ul>
+            <li>Plan Procurement Management</li>
+            <li>Conduct Procurements</li>
+            <li>Control Procurements</li>
+          </ul>
+          <p>[ Your notes here ]</p>
+        </div>
+      </details>
+
+      <details class="note-card fade-in">
+        <summary>Stakeholder Management 干系人管理</summary>
+        <div class="note-body">
+          <p>Identifies people, groups, or organizations that could impact or be impacted by the project.</p>
+          <ul>
+            <li>Identify Stakeholders</li>
+            <li>Plan Stakeholder Engagement</li>
+            <li>Manage Stakeholder Engagement</li>
+            <li>Monitor Stakeholder Engagement</li>
+          </ul>
+          <p>[ Your notes here ]</p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="contact-links">
+        <a href="mailto:your-email@example.com">Email</a>
+        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+      </div>
+      <p>&copy; 2026 Pan Ruoqing. Built with curiosity.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"E:/0-my AI projects/my-site/素材1\" \"E:/0-my AI projects/my-site/ref1.png\")",
+      "Bash(cp \"E:/0-my AI projects/my-site/素材2\" \"E:/0-my AI projects/my-site/ref2.png\")",
+      "Bash(cp \"E:/0-my AI projects/my-site/素材3\" \"E:/0-my AI projects/my-site/ref3.png\")",
+      "Bash(cp \"E:/0-my AI projects/my-site/素材4\" \"E:/0-my AI projects/my-site/ref4.png\")",
+      "Bash(cp \"E:/0-my AI projects/my-site/素材5\" \"E:/0-my AI projects/my-site/ref5.png\")"
+    ]
+  }
+}
