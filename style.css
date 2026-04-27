@@ -106,12 +106,31 @@ footer {
   text-align: center;
 }
 footer p { font-size: 0.85rem; opacity: 0.7; }
-footer .contact-links { margin-bottom: 16px; }
+footer .contact-links {
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+}
+footer .contact-item {
+  font-size: 0.9rem;
+  color: var(--linen);
+  opacity: 0.8;
+}
+footer .contact-label {
+  opacity: 0.5;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+footer .contact-sep {
+  opacity: 0.4;
+  margin: 0 6px;
+}
 footer .contact-links a {
   color: var(--linen);
-  margin: 0 12px;
-  font-size: 0.9rem;
-  opacity: 0.8;
   transition: opacity 0.2s;
 }
 footer .contact-links a:hover { opacity: 1; color: var(--cream); }
@@ -126,6 +145,8 @@ footer .contact-links a:hover { opacity: 1; color: var(--cream); }
   opacity: 0; pointer-events: none;
   transition: opacity 0.3s ease, background 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  outline: 2px solid rgba(255,255,255,0.3);
+  outline-offset: 2px;
 }
 .back-to-top.visible { opacity: 1; pointer-events: auto; }
 .back-to-top:hover { background: var(--terracotta); }

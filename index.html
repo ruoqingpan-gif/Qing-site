@@ -42,15 +42,17 @@
       background: var(--linen);
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 3rem;
       border: 1px solid var(--border);
-      filter: sepia(12%) saturate(90%);
       position: relative;
+      overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; border-radius: 8px;
     }
     .hero-photo::after {
       content: ''; position: absolute; inset: 0; border-radius: 8px;
-      background: linear-gradient(135deg, rgba(196,164,100,0.18) 0%, transparent 40%, transparent 60%, rgba(196,164,100,0.12) 100%);
-      box-shadow: inset 0 0 30px rgba(196,164,100,0.15);
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.06);
       pointer-events: none;
     }
     .hero-text { text-align: left; }
@@ -58,12 +60,6 @@
       font-size: 2.8rem;
       margin-bottom: 12px;
       color: var(--forest);
-    }
-    .hero .subtitle {
-      font-size: 1rem;
-      color: var(--text-light);
-      margin-bottom: 16px;
-      letter-spacing: 0.08em;
     }
     .hero-bio {
       font-size: 0.95rem;
@@ -162,7 +158,6 @@
       .hero-bio { max-width: 100%; }
       .hero-photo { width: 180px; min-height: 220px; }
       .hero h1 { font-size: 2rem; }
-      .hero .subtitle { font-size: 0.95rem; }
       .card-grid { grid-template-columns: 1fr; }
       .ai-grid { grid-template-columns: 1fr; }
     }
@@ -199,11 +194,10 @@
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero-inner">
-      <div class="hero-photo">&#128247;</div>
+      <div class="hero-photo"><img src="assets/个人照片.jpg" alt="Pan Ruoqing"></div>
       <div class="hero-text">
         <h1>Pan Ruoqing</h1>
-        <p class="subtitle">Game Project Manager | Game Designer | AI Explorer</p>
-        <p class="hero-bio">A game enthusiast turned PM, passionate about bridging creative vision and structured execution. PMP certified, Godot experienced, and endlessly curious about how AI can reshape game development workflows.</p>
+        <p class="hero-bio">神经生物学研究生，正在转向游戏设计与项目管理方向。<br><br>已取得 PMP 认证，通过独立完成的游戏 Demo 与策划案，对游戏研发流程建立了基础层面的理解。同时持续将 AI 工具融入内容生产与协作流程的实践中。<br><br>科研训练塑造了我分析问题的方式，培养了快速学习与迭代的能力，使我能够适应复杂多变的工作环境。<br><br>这个网站记录的是我在这段转型过程中的学习、实践与思考。</p>
       </div>
     </div>
   </section>
@@ -213,17 +207,16 @@
     <div class="container-wide">
       <div class="section-header fade-in">
         <h2>Projects</h2>
-        <p>Interactive prototypes and game experiments</p>
       </div>
       <div class="card-grid">
         <article class="card fade-in">
-          <div class="card-image" style="background: var(--forest); color: var(--cream);">
-            &#127918;
+          <div class="card-image" style="padding: 0;">
+            <img src="assets/room封面.png" alt="Room" style="width: 100%; height: 100%; object-fit: cover; display: block;">
           </div>
           <div class="card-body">
-            <span class="card-tag">Godot Demo</span>
-            <h3>Text Adventure Prototype</h3>
-            <p>A text-based interactive fiction demo built with Godot Engine. Explore branching narratives and player choice mechanics.</p>
+            <span class="card-tag">Game Demo</span>
+            <h3>Room</h3>
+            <p>一款基于 Godot 4.4 的文字推理小游戏，通过点击道具收集线索，推理解答关于房间主人的谜题。</p>
             <a href="projects.html" class="card-link">View Project</a>
           </div>
         </article>
@@ -331,8 +324,16 @@
   <footer id="contact">
     <div class="container-wide">
       <div class="contact-links">
-        <a href="mailto:your-email@example.com">Email</a>
-        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        <span class="contact-item">
+          <span class="contact-label">Email</span>
+          <a href="mailto:390331711@qq.com">390331711@qq.com</a>
+          <span class="contact-sep">/</span>
+          <a href="mailto:23211520024@m.fudan.edu.cn">23211520024@m.fudan.edu.cn</a>
+        </span>
+        <span class="contact-item">
+          <span class="contact-label">GitHub</span>
+          <a href="https://github.com/ruoqingpan-gif" target="_blank">github.com/ruoqingpan-gif</a>
+        </span>
       </div>
       <p>&copy; 2026 Pan Ruoqing. Built with curiosity.</p>
     </div>

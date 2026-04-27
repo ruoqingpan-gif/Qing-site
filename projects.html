@@ -7,36 +7,115 @@
   <meta name="description" content="Game projects and interactive prototypes by Pan Ruoqing">
   <link rel="stylesheet" href="style.css">
   <style>
-    .video-placeholder {
-      width: 100%; aspect-ratio: 16/9; background: var(--forest);
-      border-radius: 8px; display: flex; align-items: center;
-      justify-content: center; color: var(--cream); font-size: 3rem;
-      margin-bottom: 32px;
+    .video-cover {
+      position: relative; width: 100%; aspect-ratio: 16 / 9;
+      border-radius: 8px; overflow: hidden; margin-bottom: 32px;
+      cursor: pointer; background: var(--forest);
+    }
+    .video-cover img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.3s ease;
+    }
+    .video-cover:hover img { transform: none; }
+    .video-cover .play-btn {
+      position: absolute; inset: 0; display: flex;
+      align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.25); transition: background 0.3s;
+    }
+    .video-cover:hover .play-btn { background: rgba(0,0,0,0.15); }
+    .play-btn::after {
+      content: ''; width: 0; height: 0; margin-left: 6px;
+      border-style: solid;
+      border-width: 30px 0 30px 50px;
+      border-color: transparent transparent transparent rgba(255,255,255,0.95);
+      filter: drop-shadow(0 3px 10px rgba(0,0,0,0.4));
+    }
+    .video-cover iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: none;
     }
 
-    .info-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px; margin-top: 32px;
+    /* ===== Architecture Diagram ===== */
+    .arch-diagram {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      margin-top: 32px;
     }
-    .info-item {
-      padding: 24px; background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 8px; text-align: center;
+    .arch-section h3 {
+      font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--terracotta); margin-bottom: 20px;
+      border-bottom: 1px solid var(--border); padding-bottom: 8px;
     }
-    .info-item .label {
-      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--terracotta); margin-bottom: 8px;
+    .arch-layer { margin-bottom: 20px; }
+    .arch-layer-label {
+      font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 8px;
     }
-    .info-item .value { font-size: 1.1rem; color: var(--text); }
+    .arch-box {
+      display: inline-block; padding: 6px 14px; margin: 3px 4px 3px 0;
+      border: 1px solid var(--border); border-radius: 4px;
+      font-size: 0.82rem; color: var(--text); background: var(--card-bg);
+      font-family: 'SF Mono', 'Consolas', monospace;
+    }
+    .arch-box.highlight {
+      border-color: var(--forest); background: rgba(45,74,62,0.06);
+      color: var(--forest);
+    }
+    .arch-box.dim {
+      opacity: 0.5; border-style: dashed;
+    }
+    .arch-arrow {
+      color: var(--terracotta); font-size: 0.85rem; margin: 0 4px;
+    }
 
-    .screenshot-placeholder {
-      width: 100%; height: 200px; background: var(--linen);
-      border: 1px solid var(--border); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-light); font-size: 2rem; margin-top: 24px;
+    /* Logic Flow */
+    .flow-group { margin-bottom: 20px; }
+    .flow-title {
+      font-family: 'SF Mono', 'Consolas', monospace;
+      font-size: 0.82rem; color: var(--forest); margin-bottom: 6px;
+    }
+    .flow-row {
+      display: flex; align-items: center; flex-wrap: wrap;
+      font-size: 0.8rem; color: var(--text-light); margin-bottom: 4px;
+      padding-left: 12px;
+    }
+    .flow-row .step {
+      padding: 3px 10px; border: 1px solid var(--border);
+      border-radius: 3px; background: var(--card-bg); margin: 2px 0;
+      font-family: 'SF Mono', 'Consolas', monospace; font-size: 0.78rem;
+    }
+    .flow-row .arrow { color: var(--terracotta); margin: 0 6px; }
+    .flow-note {
+      font-size: 0.75rem; color: var(--text-light); padding-left: 12px;
+      margin-top: 4px; font-style: italic;
+    }
+
+    .arch-tree { margin-top: 4px; }
+    .arch-children {
+      padding-left: 20px; margin-top: 6px;
+      border-left: 2px solid var(--border); margin-left: 8px;
+    }
+    .arch-children .arch-box { display: block; margin: 4px 0; }
+
+    @media (max-width: 639px) {
+      .arch-diagram { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    .screenshot-img {
+      width: 100%; border-radius: 8px; border: 1px solid var(--border);
+      display: block; filter: sepia(12%) saturate(90%);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .screenshot-img:hover {
+      transform: translateY(-6px) scale(1.5);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+      z-index: 10; position: relative;
+    }
+    .screenshot-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; margin-top: 24px;
     }
 
     @media (max-width: 639px) {
-      .info-grid { grid-template-columns: 1fr; }
+      .screenshot-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -62,53 +141,155 @@
 
   <div class="page-header">
     <div class="container">
-      <h1>Text Adventure Demo</h1>
-      <p>A text-based interactive fiction prototype built with Godot Engine</p>
+      <h1>Room</h1>
+      <p>一款基于 Godot 4.4 的文字推理小游戏</p>
     </div>
   </div>
-
-  <section class="section-white">
-    <div class="container">
-      <div class="video-placeholder fade-in">&#9654; Demo Video (3 min)</div>
-
-      <div class="info-grid fade-in">
-        <div class="info-item">
-          <div class="label">Engine</div>
-          <div class="value">Godot 4</div>
-        </div>
-        <div class="info-item">
-          <div class="label">Genre</div>
-          <div class="value">Interactive Fiction</div>
-        </div>
-        <div class="info-item">
-          <div class="label">Play Time</div>
-          <div class="value">~1 min</div>
-        </div>
-        <div class="info-item">
-          <div class="label">Status</div>
-          <div class="value">Prototype</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="section-cream">
     <div class="container">
       <h2 class="fade-in">About This Project</h2>
       <p class="fade-in" style="color: var(--text-light); max-width: 700px;">
-        This text adventure demo explores branching narrative design and player choice mechanics.
-        Built as a rapid prototype to validate core interaction patterns,
-        it demonstrates dialogue systems, state tracking, and conditional story paths.
+        《Room》是一款基于Godot 4.4引擎开发的文字推理小游戏，玩家通过点击场景内的道具触发对话，从中收集关键线索，并依据对话内容推断解答关于房间主人的相关谜题。本版本为学习开发过程中的阶段性成果记录，仅呈现了游戏玩法的一个片段。
       </p>
-      <div class="screenshot-placeholder fade-in">&#128247; Screenshot Placeholder</div>
+    </div>
+  </section>
+
+  <section class="section-white">
+    <div class="container">
+      <h2 class="fade-in">Demo Video</h2>
+      <div class="video-cover fade-in" onclick="loadBilibili(this)" data-bvid="BV1SUeVzdEEM">
+        <img src="assets/room封面.png" alt="Demo Video Cover">
+        <div class="play-btn"></div>
+      </div>
+      <p class="fade-in" style="text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: -20px;">
+        视频无法播放？<a href="https://www.bilibili.com/video/BV1SUeVzdEEM/" target="_blank">在 B 站观看</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Architecture Diagram -->
+  <section class="section-cream">
+    <div class="container">
+      <h2 class="fade-in">Architecture</h2>
+      <div class="arch-diagram fade-in">
+
+        <!-- Left: Architecture Layers -->
+        <div class="arch-section">
+          <h3>架构 Architecture</h3>
+
+          <div class="arch-layer">
+            <div class="arch-layer-label">Scene 游戏场景</div>
+            <span class="arch-box highlight">Room</span>
+            <span class="arch-box highlight">Board</span>
+            <span class="arch-box highlight">GuessScene</span>
+          </div>
+
+          <div class="arch-layer">
+            <div class="arch-layer-label">UI State 界面状态</div>
+            <span class="arch-box">StartMenuScene</span>
+            <span class="arch-box">SettingMenuScene</span>
+            <span class="arch-box">PauseScene</span>
+          </div>
+
+          <div class="arch-layer">
+            <div class="arch-layer-label">Component 组件层</div>
+            <div class="arch-tree">
+              <span class="arch-box highlight">Interactable</span>
+              <div class="arch-children">
+                <span class="arch-box highlight">DialogItem（对话触发）</span>
+                <span class="arch-box highlight">Teleporter（场景传送）</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="arch-layer">
+            <div class="arch-layer-label">System 系统层</div>
+            <span class="arch-box highlight">SceneChanger</span>
+            <span class="arch-box highlight">Dialogic（对话插件）</span>
+          </div>
+        </div>
+
+        <!-- Right: Logic Flow -->
+        <div class="arch-section">
+          <h3>逻辑流 Logic Flow</h3>
+
+          <div class="flow-group">
+            <div class="flow-title">StartMenuScene 主菜单</div>
+            <div class="flow-row">
+              <span class="step">开始游戏</span>
+              <span class="arrow">→</span>
+              <span class="step">Room</span>
+            </div>
+          </div>
+
+          <div class="flow-group">
+            <div class="flow-title">Room / Board 线索收集场景</div>
+            <div class="flow-row">
+              <span class="step">点击物体</span>
+              <span class="arrow">→</span>
+              <span class="step">Interactable</span>
+              <span class="arrow">→</span>
+              <span class="step">Dialogic 对话</span>
+            </div>
+            <div class="flow-row">
+              <span class="step">场景切换</span>
+              <span class="arrow">→</span>
+              <span class="step">Teleporter</span>
+              <span class="arrow">→</span>
+              <span class="step">SceneChanger</span>
+            </div>
+            <div class="flow-row">
+              <span class="step">暂停 / 设置</span>
+              <span class="arrow">→</span>
+              <span class="step">PauseScene</span>
+              <span class="arch-arrow">/</span>
+              <span class="step">SettingMenuScene</span>
+            </div>
+          </div>
+
+          <div class="flow-group">
+            <div class="flow-title">GuessScene 线索推理场景</div>
+            <div class="flow-row">
+              <span class="step">Dialogic 时间线</span>
+              <span class="arrow">→</span>
+              <span class="step">回答问题</span>
+            </div>
+            <div class="flow-note">答错 → 重新回答 &nbsp;|&nbsp; 答对 → 下一题</div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="section-white">
+    <div class="container">
+      <h2 class="fade-in">Screenshots</h2>
+      <div class="screenshot-grid fade-in">
+        <img src="assets/游戏截图1.png" alt="Screenshot 1" class="screenshot-img">
+        <img src="assets/游戏截图2.png" alt="Screenshot 2" class="screenshot-img">
+        <img src="assets/游戏截图3.png" alt="Screenshot 3" class="screenshot-img">
+        <img src="assets/游戏截图4.png" alt="Screenshot 4" class="screenshot-img">
+      </div>
     </div>
   </section>
 
   <footer id="contact">
     <div class="container">
       <div class="contact-links">
-        <a href="mailto:your-email@example.com">Email</a>
-        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        <span class="contact-item">
+          <span class="contact-label">Email</span>
+          <a href="mailto:390331711@qq.com">390331711@qq.com</a>
+          <span class="contact-sep">/</span>
+          <a href="mailto:23211520024@m.fudan.edu.cn">23211520024@m.fudan.edu.cn</a>
+        </span>
+        <span class="contact-item">
+          <span class="contact-label">GitHub</span>
+          <a href="https://github.com/ruoqingpan-gif" target="_blank">github.com/ruoqingpan-gif</a>
+        </span>
       </div>
       <p>&copy; 2026 Pan Ruoqing. Built with curiosity.</p>
     </div>
@@ -126,6 +307,18 @@
     window.addEventListener('scroll', () => {
       backToTop.classList.toggle('visible', window.scrollY > 400);
     });
+
+    function loadBilibili(el) {
+      const bvid = el.dataset.bvid;
+      el.querySelector('.play-btn').remove();
+      el.querySelector('img').remove();
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://player.bilibili.com/player.html?bvid=' + bvid + '&page=1&autoplay=1&high_quality=1';
+      iframe.scrolling = 'no';
+      iframe.frameBorder = '0';
+      iframe.allowFullscreen = true;
+      el.appendChild(iframe);
+    }
   </script>
 
 </body>
