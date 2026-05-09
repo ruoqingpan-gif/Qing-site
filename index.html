@@ -134,23 +134,6 @@
       border-color: var(--terracotta);
     }
 
-    /* ===== AI Section ===== */
-    .ai-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-    }
-    .ai-item {
-      padding: 24px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      text-align: center;
-    }
-    .ai-item .icon { font-size: 2rem; margin-bottom: 12px; }
-    .ai-item h3 { font-size: 1rem; margin-bottom: 8px; }
-    .ai-item p { font-size: 0.85rem; color: var(--text-light); }
-
     /* ===== Responsive ===== */
     @media (max-width: 639px) {
       .hero-inner { flex-direction: column; gap: 32px; text-align: center; }
@@ -159,7 +142,6 @@
       .hero-photo { width: 180px; min-height: 220px; }
       .hero h1 { font-size: 2rem; }
       .card-grid { grid-template-columns: 1fr; }
-      .ai-grid { grid-template-columns: 1fr; }
     }
 
     @media (min-width: 640px) and (max-width: 1023px) {
@@ -176,20 +158,7 @@
 <body>
 
   <!-- Navigation -->
-  <nav>
-    <div class="nav-inner nav-inner-wide">
-      <span class="nav-name">Pan Ruoqing</span>
-      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
-      <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="game-design.html">Design</a>
-        <a href="pmp-notes.html">PM</a>
-        <a href="life.html">Life</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
+  <div id="nav-placeholder"></div>
 
   <!-- Hero -->
   <section class="hero" id="hero">
@@ -211,7 +180,7 @@
       <div class="card-grid">
         <article class="card fade-in">
           <div class="card-image" style="padding: 0;">
-            <img src="assets/room-cover.png" alt="Room" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            <img src="assets/room/room-cover.png" alt="Room" style="width: 100%; height: 100%; object-fit: cover; display: block;">
           </div>
           <div class="card-body">
             <span class="card-tag">Game Demo</span>
@@ -256,7 +225,7 @@
       <div class="card-grid">
         <article class="card fade-in">
           <div class="card-image" style="padding: 0;">
-            <img src="assets/pmp-certification.png" alt="PMP Certification" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            <img src="assets/pmp/pmp-certification.png" alt="PMP Certification" style="width: 100%; height: 100%; object-fit: cover; display: block;">
           </div>
           <div class="card-body">
             <span class="card-tag">PMP Certified (3A)</span>
@@ -269,35 +238,8 @@
     </div>
   </section>
 
-  <!-- AI -->
-  <section class="section-cream" id="ai">
-    <div class="container-wide">
-      <div class="section-header fade-in">
-        <h2>AI Exploration</h2>
-        <p>Leveraging AI to augment project management and creative workflows</p>
-      </div>
-      <div class="ai-grid">
-        <div class="ai-item fade-in">
-          <div class="icon">&#129302;</div>
-          <h3>AI-Assisted PM</h3>
-          <p>Exploring how AI tools can streamline requirements analysis, risk management, and documentation.</p>
-        </div>
-        <div class="ai-item fade-in">
-          <div class="icon">&#127912;</div>
-          <h3>Generative Design</h3>
-          <p>Experimenting with AI for concept art, narrative generation, and rapid prototyping.</p>
-        </div>
-        <div class="ai-item fade-in">
-          <div class="icon">&#128161;</div>
-          <h3>Frontier Tech</h3>
-          <p>Staying curious about emerging technologies that reshape how we build and play games.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Life -->
-  <section class="section-white" id="life">
+  <section class="section-cream" id="life">
     <div class="container-wide">
       <div class="section-header fade-in">
         <h2>Life</h2>
@@ -320,42 +262,13 @@
   </section>
 
   <!-- Footer -->
-  <footer id="contact">
-    <div class="container-wide">
-      <div class="contact-links">
-        <span class="contact-item">
-          <span class="contact-label">Email</span>
-          <a href="mailto:390331711@qq.com">390331711@qq.com</a>
-          <span class="contact-sep">/</span>
-          <a href="mailto:23211520024@m.fudan.edu.cn">23211520024@m.fudan.edu.cn</a>
-        </span>
-        <span class="contact-item">
-          <span class="contact-label">GitHub</span>
-          <a href="https://github.com/ruoqingpan-gif" target="_blank">github.com/ruoqingpan-gif</a>
-        </span>
-      </div>
-      <p>&copy; 2026 Pan Ruoqing. Built with curiosity.</p>
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
-  <!-- Back to Top Button -->
-  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
-
-  <!-- Scroll Animation Script -->
+  <script src="components.js"></script>
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 400);
-    });
+    renderNav('home');
+    renderFooter();
+    initCommon();
   </script>
 
 </body>

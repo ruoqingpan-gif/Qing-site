@@ -32,23 +32,7 @@
 </head>
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <div class="nav-left">
-        <a href="index.html" class="nav-back">&larr; Home</a>
-        <span class="nav-name">Pan Ruoqing</span>
-      </div>
-      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="game-design.html" class="active">Design</a>
-        <a href="pmp-notes.html">PM</a>
-        <a href="life.html">Life</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
+  <div id="nav-placeholder"></div>
 
   <div class="page-header">
     <div class="container">
@@ -98,36 +82,13 @@
     </div>
   </section>
 
-  <footer id="contact">
-    <div class="container">
-      <div class="contact-links">
-        <span class="contact-item">
-          <span class="contact-label">Email</span>
-          <a href="mailto:390331711@qq.com">390331711@qq.com</a>
-          <span class="contact-sep">/</span>
-          <a href="mailto:23211520024@m.fudan.edu.cn">23211520024@m.fudan.edu.cn</a>
-        </span>
-        <span class="contact-item">
-          <span class="contact-label">GitHub</span>
-          <a href="https://github.com/ruoqingpan-gif" target="_blank">github.com/ruoqingpan-gif</a>
-        </span>
-      </div>
-      <p>&copy; 2026 Pan Ruoqing. Built with curiosity.</p>
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
-  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
-
+  <script src="components.js"></script>
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 400);
-    });
+    renderNav('design');
+    renderFooter();
+    initCommon();
   </script>
 
 </body>

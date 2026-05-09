@@ -19,9 +19,58 @@
       border-radius: 3px; margin-bottom: 12px;
     }
     .archive-card p { color: var(--text-light); font-size: 0.9rem; }
+    .exp-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 8px; margin-bottom: 16px; overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+    .exp-card summary {
+      padding: 20px 24px; cursor: pointer; display: flex;
+      justify-content: space-between; align-items: center;
+      font-family: Georgia, serif; font-size: 1.05rem; color: var(--forest);
+      list-style: none; transition: background 0.2s;
+    }
+    .exp-card summary::-webkit-details-marker { display: none; }
+    .exp-card summary::after {
+      content: '+'; font-size: 1.2rem; color: var(--terracotta);
+      transition: transform 0.2s;
+    }
+    .exp-card[open] summary::after { content: '-'; }
+    .exp-card summary:hover { background: var(--linen); }
+    .exp-body {
+      padding: 0 24px 24px; color: var(--text-light); font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .exp-body p { margin-bottom: 10px; }
+    .card-close-btn {
+      display: block; margin: 24px auto 0; padding: 8px 24px;
+      background: var(--forest); color: var(--cream); border: none;
+      border-radius: 6px; cursor: pointer; font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .card-close-btn:hover { background: var(--terracotta); }
+    .exp-header {
+      display: flex; align-items: baseline; gap: 16px;
+      margin: 8px 0 16px;
+    }
+    .exp-role { font-size: 1rem; color: var(--forest); font-weight: 600; }
+    .exp-date { font-size: 0.82rem; color: var(--text-light); }
+    .exp-list {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 16px;
+    }
+    .exp-item {
+      background: var(--linen); border-radius: 6px; padding: 16px 20px;
+    }
+    .exp-item h4 {
+      font-size: 0.88rem; color: var(--forest); margin: 0 0 6px;
+    }
+    .exp-item p {
+      font-size: 0.82rem; color: var(--text-light); margin: 0;
+    }
 
     .photo-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 20px; margin-top: 24px;
     }
     .photo-placeholder {
@@ -35,6 +84,16 @@
       background: linear-gradient(135deg, rgba(196,164,100,0.18) 0%, transparent 40%, transparent 60%, rgba(196,164,100,0.12) 100%);
       box-shadow: inset 0 0 30px rgba(196,164,100,0.15);
       pointer-events: none;
+    }
+    .photo-item {
+      aspect-ratio: 4/3; width: 100%; object-fit: cover;
+      border-radius: 4px; filter: sepia(12%) saturate(90%);
+      display: block;
+    }
+    .photo-card { margin: 0; }
+    .photo-card figcaption {
+      text-align: center; font-size: 0.8rem; color: var(--text-light);
+      margin-top: 8px;
     }
 
     .skill-grid {
@@ -50,31 +109,45 @@
     .skill-card h3 { font-size: 0.95rem; margin-bottom: 4px; }
     .skill-card p { font-size: 0.8rem; color: var(--text-light); }
 
+    /* Gaming */
+    .platform-group { margin-bottom: 32px; }
+    .platform-title {
+      font-family: Georgia, serif; font-size: 1.15rem;
+      color: var(--forest); margin-bottom: 16px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    }
+    .genre-group { margin-bottom: 16px; }
+    .genre-label {
+      font-size: 0.78rem;
+      color: var(--terracotta); margin-bottom: 10px;
+      padding-left: 10px; border-left: 3px solid var(--terracotta);
+    }
+    .game-list {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .game-tag {
+      display: inline-flex; align-items: baseline; gap: 6px;
+      padding: 5px 14px; border: 1px solid var(--border);
+      border-radius: 4px; background: var(--card-bg); font-size: 0.85rem;
+      color: var(--text);
+    }
+    .game-stat {
+      font-size: 0.72rem; color: var(--text-light);
+    }
+
     @media (max-width: 639px) {
-      .photo-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr 1fr; }
       .skill-grid { grid-template-columns: 1fr 1fr; }
+      .exp-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .photo-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <div class="nav-left">
-        <a href="index.html" class="nav-back">&larr; Home</a>
-        <span class="nav-name">Pan Ruoqing</span>
-      </div>
-      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="game-design.html">Design</a>
-        <a href="pmp-notes.html">PM</a>
-        <a href="life.html" class="active">Life</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
+  <div id="nav-placeholder"></div>
 
   <div class="page-header">
     <div class="container">
@@ -87,12 +160,109 @@
   <section class="section-white">
     <div class="container">
       <h2 class="fade-in">Gaming Journey</h2>
-      <div class="archive-card fade-in">
-        <span class="tag">Passion</span>
-        <h3>From Player to Creator</h3>
-        <p>Years of gaming experience across genres, developing a deep understanding of what makes games compelling. From competitive multiplayer to narrative-driven single players, each game shaped my perspective on design and player psychology.</p>
-        <p style="margin-top: 12px;">[ Your gaming story here - favorite genres, memorable experiences, what games taught you ]</p>
+
+      <!-- Mobile -->
+      <div class="platform-group fade-in">
+        <h3 class="platform-title">手游</h3>
+
+        <div class="genre-group">
+          <div class="genre-label">二次元</div>
+          <div class="game-list">
+            <span class="game-tag">原神 <span class="game-stat">600+天活跃 · 58级 · 750+成就</span></span>
+            <span class="game-tag">崩坏：星穹铁道 <span class="game-stat">连续240天 · 70级 · 500+成就</span></span>
+            <span class="game-tag">绝区零</span>
+          </div>
+        </div>
+
+        <div class="genre-group">
+          <div class="genre-label">塔防 / 策略</div>
+          <div class="game-list">
+            <span class="game-tag">明日方舟 <span class="game-stat">90级 · 卫戍奖杯150+</span></span>
+          </div>
+        </div>
+
+        <div class="genre-group">
+          <div class="genre-label">乙女</div>
+          <div class="game-list">
+            <span class="game-tag">恋与制作人 <span class="game-stat">连续200+天 · 充值1000+</span></span>
+            <span class="game-tag">恋与深空 <span class="game-stat">开服玩家</span></span>
+          </div>
+        </div>
+
+        <div class="genre-group">
+          <div class="genre-label">卡牌 / 叙事</div>
+          <div class="game-list">
+            <span class="game-tag">重返未来：1999 <span class="game-stat">连续120+天</span></span>
+            <span class="game-tag">如鸢</span>
+            <span class="game-tag">易次元 <span class="game-stat">游玩100h+</span></span>
+          </div>
+        </div>
+
+        <div class="genre-group">
+          <div class="genre-label">模拟经营 / 休闲</div>
+          <div class="game-list">
+            <span class="game-tag">桃源深处有人家</span>
+            <span class="game-tag">江南百景图</span>
+            <span class="game-tag">光遇</span>
+            <span class="game-tag">肥鹅健身房 <span class="game-stat">连续游玩约1年</span></span>
+          </div>
+        </div>
       </div>
+
+      <!-- PC / Console -->
+      <div class="platform-group fade-in">
+        <h3 class="platform-title">PC / 主机</h3>
+
+        <div class="genre-group">
+          <div class="genre-label">模拟经营 / 养成</div>
+          <div class="game-list">
+            <span class="game-tag">星露谷物语 <span class="game-stat">150h+ · 完成社区献祭</span></span>
+            <span class="game-tag">火山的女儿 <span class="game-stat">多结局通关</span></span>
+            <span class="game-tag">灵魂摆渡者 <span class="game-stat">游玩50h+</span></span>
+            <span class="game-tag">动物森友会</span>
+          </div>
+        </div>
+
+        <div class="genre-group">
+          <div class="genre-label">角色扮演 / 叙事冒险</div>
+          <div class="game-list">
+            <span class="game-tag">极乐迪斯科 <span class="game-stat">通关</span></span>
+            <span class="game-tag">女神异闻录5 Royal <span class="game-stat">游玩70h+</span></span>
+            <span class="game-tag">怪物猎人：世界</span>
+            <span class="game-tag">苏丹的游戏</span>
+          </div>
+        </div>
+
+        <div class="genre-group">
+          <div class="genre-label">冒险解谜 / 动作</div>
+          <div class="game-list">
+            <span class="game-tag">空洞骑士 <span class="game-stat">50h+ · 一结局通关</span></span>
+            <span class="game-tag">空洞骑士：丝之歌</span>
+            <span class="game-tag">巴别塔圣歌 <span class="game-stat">通关</span></span>
+            <span class="game-tag">GRIS <span class="game-stat">通关</span></span>
+            <span class="game-tag">奥日与萤火意志 <span class="game-stat">通关</span></span>
+          </div>
+        </div>
+
+        <div class="genre-group">
+          <div class="genre-label">多人 / 合作</div>
+          <div class="game-list">
+            <span class="game-tag">魔兽世界</span>
+            <span class="game-tag">双人成行 <span class="game-stat">通关</span></span>
+            <span class="game-tag">人类一败涂地</span>
+          </div>
+        </div>
+
+        <div class="genre-group">
+          <div class="genre-label">其他</div>
+          <div class="game-list">
+            <span class="game-tag">黑神话：悟空</span>
+            <span class="game-tag">塞尔达传说：旷野之息</span>
+            <span class="game-tag">斯普拉遁3</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -100,12 +270,87 @@
   <section class="section-cream">
     <div class="container">
       <h2 class="fade-in">Student Leadership</h2>
-      <div class="archive-card fade-in">
-        <span class="tag">Experience</span>
-        <h3>Student Organization Roles</h3>
-        <p>Leadership experiences that built skills in team coordination, event planning, stakeholder communication, and resource management — directly applicable to game project management.</p>
-        <p style="margin-top: 12px;">[ Your student work experiences here - role, responsibilities, achievements, PM skills demonstrated ]</p>
-      </div>
+
+      <!-- 种太阳支教夏令营 -->
+      <details class="exp-card fade-in">
+        <summary>种太阳支教夏令营</summary>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="exp-role">巴中营地副营长</span>
+            <span class="exp-date">2021.04 — 2021.08</span>
+          </div>
+          <p>作为营长团核心成员，主导 4–7 月营地全流程筹建，覆盖 20+ 志愿者，在多次人员调整等突发状况下确保项目如期开营，零延误、零安全事故。</p>
+          <div class="exp-list">
+            <div class="exp-item">
+              <h4>团队分层建设</h4>
+              <p>针对营地需求开展 7 场专题培训，采用"专业领学 + 小组共学 + 集体分享"三级形式。针对培训参与率低的问题，主动建立互助文档，使培训参与度提高 15%，保证 20 余名志愿者 100% 通过岗前考核。</p>
+            </div>
+            <div class="exp-item">
+              <h4>课程质量管理</h4>
+              <p>明确各课程小组分工，对接外部专业老师，每 1–2 周核查教案合规性与物资筹备进度，课程最终设计获合作校方高度认可。</p>
+            </div>
+            <div class="exp-item">
+              <h4>营地保障</h4>
+              <p>提前 1 个月线下调研营地物资、交通及物流情况，建立清单与分配表，制定疫情与人员变动预案，物资运输受阻时快速联动校方完成补救。</p>
+            </div>
+            <div class="exp-item">
+              <h4>标准化与知识沉淀</h4>
+              <p>每日复盘筹备细节，产出《营地调研报告》《营地互助登记》等 4 项标准化文档，提升后续营地活动的执行效率与质量。</p>
+            </div>
+          </div>
+          <div class="photo-grid">
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-01.png" alt="营期安排" class="photo-item">
+              <figcaption>营期安排</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-02.png" alt="前期每日任务" class="photo-item">
+              <figcaption>前期每日任务</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-03.jpg" alt="营长团合影" class="photo-item">
+              <figcaption>营长团合影</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-04.jpg" alt="志愿者们在金盆小学" class="photo-item">
+              <figcaption>志愿者们在金盆小学</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-05.jpg" alt="生命的联结活动" class="photo-item">
+              <figcaption>生命的联结活动</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-06.jpg" alt="孩子的诗" class="photo-item">
+              <figcaption>孩子的诗</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-07.jpg" alt="扎染" class="photo-item">
+              <figcaption>扎染</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-08.jpg" alt="志愿者练习课程活动" class="photo-item">
+              <figcaption>志愿者练习课程活动</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-09.jpg" alt="志愿者练习课程活动" class="photo-item">
+              <figcaption>志愿者练习课程活动</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-10.jpg" alt="志愿者和我" class="photo-item">
+              <figcaption>志愿者和我</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-11.jpg" alt="志愿者和我" class="photo-item">
+              <figcaption>志愿者和我</figcaption>
+            </figure>
+            <figure class="photo-card">
+              <img src="assets/life/sunflower-12.jpg" alt="告别前夜" class="photo-item">
+              <figcaption>告别前夜</figcaption>
+            </figure>
+          </div>
+        </div>
+      </details>
+
     </div>
   </section>
 
@@ -154,35 +399,21 @@
     </div>
   </section>
 
-  <footer id="contact">
-    <div class="container">
-      <div class="contact-links">
-        <span class="contact-item">
-          <span class="contact-label">Email</span>
-          <a href="mailto:390331711@qq.com">390331711@qq.com</a>
-          <span class="contact-sep">/</span>
-          <a href="mailto:23211520024@m.fudan.edu.cn">23211520024@m.fudan.edu.cn</a>
-        </span>
-        <span class="contact-item">
-          <span class="contact-label">GitHub</span>
-          <a href="https://github.com/ruoqingpan-gif" target="_blank">github.com/ruoqingpan-gif</a>
-        </span>
-      </div>
-      <p>&copy; 2026 Pan Ruoqing. Built with curiosity.</p>
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
-  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
-
+  <script src="components.js"></script>
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    renderNav('life');
+    renderFooter();
+    initCommon();
 
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 400);
+    // Add close button to each experience card
+    document.querySelectorAll('.exp-card .exp-body').forEach(body => {
+      const btn = document.createElement('button');
+      btn.className = 'card-close-btn';
+      btn.textContent = '收起 ↑';
+      btn.onclick = function() { this.closest('details').open = false; };
+      body.appendChild(btn);
     });
   </script>
 
