@@ -3,7 +3,6 @@
 const NAV_ITEMS = [
   { href: 'index.html', label: 'Home', key: 'home' },
   { href: 'projects.html', label: 'Projects', key: 'projects' },
-  { href: 'game-design.html', label: 'Design', key: 'design' },
   { href: 'pmp-notes.html', label: 'PM', key: 'pm' },
   { href: 'life.html', label: 'Life', key: 'life' },
 ];
