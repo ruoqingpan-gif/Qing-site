@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects | Pan Ruoqing</title>
-  <meta name="description" content="产品实践与用户体验设计案例 - Pan Ruoqing">
+  <meta name="description" content="交互原型与独立开发实践 - Pan Ruoqing">
   <link rel="stylesheet" href="style.css">
   <style>
     .video-cover {
@@ -113,6 +113,16 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px; margin-top: 24px;
     }
+    .about-text {
+      color: var(--text-light);
+      font-size: 0.95rem; line-height: 1.9;
+    }
+    .about-text p { margin-bottom: 14px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text ul {
+      margin: 4px 0 14px 20px; line-height: 2;
+    }
+    .about-text ul:last-child { margin-bottom: 0; }
 
     @media (max-width: 639px) {
       .screenshot-grid { grid-template-columns: 1fr; }
@@ -126,16 +136,26 @@
   <div class="page-header">
     <div class="container">
       <h1>Room</h1>
-      <p>从零到一的交互产品全流程实践</p>
+      <p>交互原型与独立开发实践</p>
     </div>
   </div>
 
   <section class="section-cream">
     <div class="container">
       <h2 class="fade-in">About This Project</h2>
-      <p class="fade-in" style="color: var(--text-light); max-width: 700px;">
-        《Room》是一个从零独立完成的交互产品项目。基于 Godot 4.4 引擎，完整经历了用户需求分析、交互体验设计、技术架构搭建、开发实现与迭代测试的全流程。产品形态为文字推理交互体验：用户通过点击场景中的物件触发对话、收集线索、推理并解答谜题。虽然是阶段性成果，但完整验证了"从需求理解到产品落地"的闭环能力。
-      </p>
+      <div class="about-text fade-in">
+        <p>《Room》是我使用Godot 4.4独立完成的一项交互原型实践。</p>
+        <p>项目采用文字推理与场景探索的形式：用户通过点击场景中的物件触发对话、收集线索，并在推理场景中回答问题。开发过程中，我完成了基础玩法梳理、场景结构设计、交互逻辑搭建、对话系统接入、功能实现及测试调整。</p>
+        <p>这是一次阶段性的个人项目，重点不在于完成一款成熟游戏，而在于通过实际开发理解一个交互想法如何被拆解为场景、组件和功能模块，并最终形成可以运行和展示的原型。</p>
+        <p>通过该项目，我初步积累了以下实践经验：</p>
+        <ul>
+          <li>将模糊想法拆解为具体功能和开发任务；</li>
+          <li>设计场景跳转、物件交互和对话触发逻辑；</li>
+          <li>使用 Dialogic 插件搭建对话和答题流程；</li>
+          <li>在开发过程中定位问题并持续调整体验；</li>
+          <li>独立完成从工具学习、原型搭建到成果展示的完整过程。</li>
+        </ul>
+      </div>
     </div>
   </section>
 
